@@ -5,9 +5,11 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -53,6 +55,11 @@ public class ProductosActivity extends AppCompatActivity implements Response.Err
         RequestQueue rq = Volley.newRequestQueue(this);
         rq.add(jsArrayRequest);
 
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        int rotation = display.getRotation();
+        if(rotation!=0){
+            GV.setNumColumns(4);
+        }
     }
 
     @Override

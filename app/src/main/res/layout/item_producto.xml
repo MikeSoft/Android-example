@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="30dp"
+    >
 
     <TextView
         android:id="@+id/txt_nombre"
@@ -12,22 +16,26 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="22dp"
+        android:fitsSystemWindows="true"
+        android:textStyle="bold"
         android:text="TextView" />
 
     <ImageView
         android:id="@+id/img_prod"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/txt_nombre"
         android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/txt_price"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/txt_nombre"
         android:layout_alignStart="@+id/txt_nombre"
         android:layout_below="@+id/img_prod"
         android:text="TextView" />
-</RelativeLayout>
+</LinearLayout>

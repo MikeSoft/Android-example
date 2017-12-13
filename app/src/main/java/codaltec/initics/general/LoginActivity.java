@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewManager;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.andrognito.patternlockview.PatternLockView;
 import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import com.andrognito.patternlockview.utils.PatternLockUtils;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -49,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements PatternLockViewL
             //((ViewManager)btn_login.getParent()).removeView(btn_login);
             btn_login.setVisibility(View.INVISIBLE);
         }
+
+        Log.d("FCM_TOKEN", FirebaseInstanceId.getInstance().getToken());
     }
 
     @Override

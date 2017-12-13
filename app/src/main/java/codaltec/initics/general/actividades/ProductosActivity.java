@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import codaltec.initics.general.R;
 public class ProductosActivity extends AppCompatActivity implements Response.ErrorListener, Response.Listener<JSONObject> {
 
     JsonObjectRequest jsArrayRequest;
-    String URL="http://moi24.org/api/index/";
+    String URL = "http://moi24.org/api/index/";
     ListView LV;
 
     @Override
@@ -38,7 +39,7 @@ public class ProductosActivity extends AppCompatActivity implements Response.Err
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
         setTitle("Productos");
-        LV = (ListView)findViewById(R.id.lista_listview);
+        LV = (ListView) findViewById(R.id.lista_listview);
         jsArrayRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
@@ -49,19 +50,21 @@ public class ProductosActivity extends AppCompatActivity implements Response.Err
         rq.add(jsArrayRequest);
 
     }
+
     @Override
     public void onErrorResponse(VolleyError error) {
         error.printStackTrace();
     }
+
     @Override
     public void onResponse(JSONObject response) {
-        Log.i("RTA",response.toString());
-        try{
+        Log.i("RTA", response.toString());
+        try {
             JSONArray Productos = response.getJSONArray("productos");
-            Adapter adaptador = new PromocionAdapter(Productos,this);
-            LV.setAdapter(adaptador);
+            Adapter adaptador = new PromocionAdapter(Productos, this);
+            LV.setAdapter((ListAdapter) adaptador);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -76,46 +79,46 @@ public class ProductosActivity extends AppCompatActivity implements Response.Err
         JSONArray array_promociones;
 
 
-    public PromocionAdapter(JSONArray array_promociones, Context CTT) {
-        this.CTT = CTT;
-        this.array_promociones = array_promociones;
-        inflater = (LayoutInflater) CTT.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        SERVER = "http://moi24.org";
-    }
-
-
-    @Override
-    public int getCount() {
-        return array_promociones.length();
-    }
-
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup parent) {
-        try {
-            if (view == null) {
-                //view = inflater.from(parent.getContext()).inflate(R.layout.item_promocion, parent, false);
-                view = inflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-            }
-
-            JSONObject jsonObject = array_promociones.getJSONObject(i);
-            ((TextView)view.findViewById(android.R.id.text1)).setText("");
-            //String url_imagen = jsonObject.getString("imagen");
-            //Picasso.with(CTT).load(SERVER + url_imagen).into((ImageView) view.findViewById(R.id.imagen)
-            );
-        } catch (JSONException e) {
-            e.printStackTrace();
+        public PromocionAdapter(JSONArray array_promociones, Context CTT) {
+            this.CTT = CTT;
+            this.array_promociones = array_promociones;
+            inflater = (LayoutInflater) CTT.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            SERVER = "http://moi24.org";
         }
-        return view;
-    }
 
+
+        @Override
+        public int getCount() {
+            return array_promociones.length();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup parent) {
+            try {
+                if (view == null) {
+                    //view = inflater.from(parent.getContext()).inflate(R.layout.item_promocion, parent, false);
+                    view = inflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+                }
+
+                JSONObject jsonObject = array_promociones.getJSONObject(i);
+                ((TextView) view.findViewById(android.R.id.text1)).setText(jsonObject.getString("nombre"));
+                //String url_imagen = jsonObject.getString("imagen");
+                //Picasso.with(CTT).load(SERVER + url_imagen).into((ImageView) view.findViewById(R.id.imagen));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return view;
+        }
+
+    }
 }

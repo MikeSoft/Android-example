@@ -55,7 +55,6 @@ public class ParseRSS {
                     }
                 }
 
-                Log.d("MyXmlParser", "Parsing name ==> " + name);
                 String result = "";
                 if (xmlPullParser.next() == XmlPullParser.TEXT) {
                     result = xmlPullParser.getText();

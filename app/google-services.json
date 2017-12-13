@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "132903593502",
+    "firebase_url": "https://pushpruebas-ce8bb.firebaseio.com",
+    "project_id": "pushpruebas-ce8bb",
+    "storage_bucket": "pushpruebas-ce8bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132903593502:android:ce790ba910138340",
+        "android_client_info": {
+          "package_name": "codaltec.initics.general"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132903593502-ofua513tbj942o2gdf6brtpg4fiiqngo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "codaltec.initics.general",
+            "certificate_hash": "f6364e4789e7669dd76d95a7a1e2f20417a8f5d8"
+          }
+        },
+        {
+          "client_id": "132903593502-li67gtm97e352ovrsefq167j9bphl5ft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgCSVf7ZMDkMl499dxKCdtTKSF79QnbHI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132903593502-li67gtm97e352ovrsefq167j9bphl5ft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

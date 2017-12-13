@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,12 +58,19 @@ public class PromocionAdapter extends BaseAdapter {
         try {
             if (view == null) {
                 //view = inflater.from(parent.getContext()).inflate(R.layout.item_promocion, parent, false);
-                view = inflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+                view = inflater.from(parent.getContext()).inflate(R.layout.item_producto, parent, false);
             }
+            TextView nombre,precio;
+            ImageView imagen;
+            nombre = (TextView)view.findViewById(R.id.txt_nombre);
+            precio = (TextView)view.findViewById(R.id.txt_price);
+            imagen = (ImageView)view.findViewById(R.id.img_prod);
+
             JSONObject jsonObject = array_promociones.getJSONObject(i);
-            ((TextView) view.findViewById(android.R.id.text1)).setText(jsonObject.getString("nombre"));
-            //String url_imagen = jsonObject.getString("imagen");
-            //Picasso.with(CTT).load(SERVER + url_imagen).into((ImageView) view.findViewById(R.id.imagen));
+            nombre.setText(jsonObject.getString("nombre"));
+            precio.setText(jsonObject.getString("precio"));
+            String url_imagen = jsonObject.getString("imagen");
+            Picasso.with(CTT).load(SERVER + url_imagen).into(imagen);
         } catch (JSONException e) {
             e.printStackTrace();
         }

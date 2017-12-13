@@ -34,7 +34,6 @@ public class PromocionAdapter extends BaseAdapter {
         SERVER = "http://moi24.org";
     }
 
-
     @Override
     public int getCount() {
         return array_promociones.length();
@@ -58,7 +57,6 @@ public class PromocionAdapter extends BaseAdapter {
                 //view = inflater.from(parent.getContext()).inflate(R.layout.item_promocion, parent, false);
                 view = inflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
             }
-
             JSONObject jsonObject = array_promociones.getJSONObject(i);
             ((TextView) view.findViewById(android.R.id.text1)).setText(jsonObject.getString("nombre"));
             //String url_imagen = jsonObject.getString("imagen");
@@ -66,8 +64,6 @@ public class PromocionAdapter extends BaseAdapter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return view;
     }
-
 }

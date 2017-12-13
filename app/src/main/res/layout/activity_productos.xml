@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     tools:context="codaltec.initics.general.actividades.ProductosActivity">
 
-    <ListView
-        android:id="@+id/lista_listview"
+    <GridView
+        android:id="@+id/list_gridv"
+        android:numColumns="3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

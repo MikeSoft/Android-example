@@ -48,10 +48,12 @@ public class ArticuloActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
             case R.id.ai_link:
                 Intent I = new Intent(Intent.ACTION_VIEW);
                 I.setData(Uri.parse(link));

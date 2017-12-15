@@ -1,6 +1,7 @@
 package codaltec.initics.general;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         View headerLayout = navigationView.getHeaderView(0);
         ((TextView)headerLayout.findViewById(R.id.textView)).setText("Mike Olivera");
 
+        navigationView.setItemIconTintList(null);
 
         fragment(GenericoFragment.FragmentBuilder("heello"),"main");
     }
@@ -101,16 +103,16 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             fragment(GenericoFragment.FragmentBuilder("camara"),"main");
-        } else if (id == R.id.nav_gallery) {
-            fragment(GenericoFragment.FragmentBuilder("galeria"),"main");
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_rss) {
+            fragment(new rssFragment(),"menu");
+        } else if (id == R.id.nav_productos) {
             startActivity(new Intent(this, ProductosActivity.class));
         } else if (id == R.id.nav_manage) {
             fragment(GenericoFragment.FragmentBuilder("tools"),"main");
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-                fragment(new rssFragment(),"menu");
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

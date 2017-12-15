@@ -7,13 +7,14 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Import" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_rss"
+
+            android:icon="@drawable/rss_icon"
+            android:title="Lector RSS" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Peticion" />
+            android:id="@+id/nav_productos"
+            android:icon="@drawable/productos"
+            android:title="Productos" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

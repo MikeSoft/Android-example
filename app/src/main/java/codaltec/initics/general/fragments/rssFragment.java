@@ -2,6 +2,7 @@ package codaltec.initics.general.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,13 +31,14 @@ import java.io.IOException;
 import java.util.List;
 
 import codaltec.initics.general.R;
+import codaltec.initics.general.actividades.ArticuloActivity;
 import codaltec.initics.general.utils.RSS.ParseRSS;
 import codaltec.initics.general.utils.RSS.RssFeedModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class rssFragment extends Fragment implements Response.ErrorListener, Response.Listener<String> {
+public class rssFragment extends Fragment implements Response.ErrorListener, Response.Listener<String>, AdapterView.OnItemClickListener {
 
     public rssFragment() {
 
@@ -54,9 +58,21 @@ public class rssFragment extends Fragment implements Response.ErrorListener, Res
 
         PB=(ProgressBar)V.findViewById(R.id.progressBar2);
 
-
+        listado.setOnItemClickListener(this);
 
         return V;
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        RssFeedModel articulo = listadoRSS.get(i);
+        Intent I = new Intent(getActivity(), ArticuloActivity.class);
+        I.putExtra("titulo",articulo.getTitle());
+        I.putExtra("fecha",articulo.getDate());
+        I.putExtra("link",articulo.getLink());
+        I.putExtra("descripcion",articulo.getDescription());
+        startActivity(I);
     }
 
     @Override
@@ -95,6 +111,7 @@ public class rssFragment extends Fragment implements Response.ErrorListener, Res
         }
 
     }
+
 
     class noticiasAdapter extends BaseAdapter{
         LayoutInflater inflater;

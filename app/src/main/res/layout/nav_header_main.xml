@@ -20,6 +20,7 @@
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
+        android:id="@+id/textoarriba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"

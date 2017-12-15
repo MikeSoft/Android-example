@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
 
         View headerLayout = navigationView.getHeaderView(0);
         ((TextView)headerLayout.findViewById(R.id.textView)).setText("Mike Olivera");
+        ((TextView)headerLayout.findViewById(R.id.textoarriba)).setText("IniTics");
 
         navigationView.setItemIconTintList(null);
 

@@ -39,7 +39,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".actividades.ArticuloActivity"></activity>
+        <activity android:name=".actividades.ArticuloActivity" android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

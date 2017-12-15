@@ -47,6 +47,7 @@ public class rssFragment extends Fragment implements Response.ErrorListener, Res
     ListView listado;
     StringRequest stringRequest;
     String RSS = "http://www.unillanos.edu.co/index.php?option=com_content&view=category&id=3&Itemid=16&format=feed&type=rss";
+    //String RSS = "http://www.eltiempo.com/rss/opinion.xml";
     List<RssFeedModel> listadoRSS;
     ProgressBar PB;
     @Override

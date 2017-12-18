@@ -3,6 +3,7 @@ package codaltec.initics.general.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,9 +14,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import codaltec.initics.general.MainActivity;
@@ -44,6 +50,10 @@ public class PanelRSSFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View V=inflater.inflate(R.layout.fragment_rss, container, false);
+        listado= ((ListView)V.findViewById(R.id.listado));
+        listado.setVisibility(View.VISIBLE);
+        listado.setAdapter(new listados_db(MA,DB.obtenerFeeds()));
+        ((ProgressBar)V.findViewById(R.id.progressBar2)).setVisibility(View.INVISIBLE);
         return V;
     }
 
@@ -81,17 +91,35 @@ public class PanelRSSFragment extends Fragment {
                     }
                     if(DB.agregarFeed(nombre.getText().toString(),link.getText().toString())){
                         Toasty.success(MA,"RSS agregado",Toast.LENGTH_SHORT).show();
+                        listado.deferNotifyDataSetChanged();
+                    }else{
+                        Toasty.error(MA,"Error al guardar en la DB", Toast.LENGTH_SHORT);
                     }
                 }
             });
-
-
-
             DDD.show();
-
-
         }
-
         return  true;
     }
+
+
+    class listados_db extends CursorAdapter{
+
+        public listados_db(Context context, Cursor c) {
+            super(context, c);
+        }
+
+        @Override
+        public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
+            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, viewGroup, false);
+        }
+
+        @Override
+        public void bindView(View view, Context context, Cursor cursor) {
+            ((TextView) view.findViewById(android.R.id.text1)).setText(
+                    cursor.getString(1)
+            );
+        }
+    }
+
 }

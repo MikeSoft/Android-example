@@ -22,8 +22,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(
-                "CREATE TABLE paginas(_id PRIMARY KEY AUTOINCREMENT ,nombre text not null, link TEXT NOT NULL  )",
-                null);
+                "CREATE TABLE paginas(_id INTEGER PRIMARY KEY AUTOINCREMENT,nombre text not null, link TEXT NOT NULL )");
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

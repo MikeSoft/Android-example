@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements PatternLockViewL
             btn_login.setVisibility(View.INVISIBLE);
         }
 
-        Log.d("FCM_TOKEN", FirebaseInstanceId.getInstance().getToken());
+       // Log.d("FCM_TOKEN", FirebaseInstanceId.getInstance().getToken());
     }
 
     @Override

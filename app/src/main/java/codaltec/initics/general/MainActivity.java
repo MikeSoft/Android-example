@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import codaltec.initics.general.actividades.ProductosActivity;
+import codaltec.initics.general.fragments.PanelRSSFragment;
 import codaltec.initics.general.fragments.rssFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -105,7 +106,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             fragment(GenericoFragment.FragmentBuilder("camara"),"main");
         } else if (id == R.id.nav_rss) {
-            fragment(new rssFragment(),"menu");
+            //fragment(new rssFragment(),"menu");
+            fragment(new PanelRSSFragment(),"menu");
         } else if (id == R.id.nav_productos) {
             startActivity(new Intent(this, ProductosActivity.class));
         } else if (id == R.id.nav_manage) {
